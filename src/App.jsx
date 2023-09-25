@@ -1,16 +1,18 @@
 import { useSelector, useDispatch } from "react-redux"
+import { actions } from "./store";
 
 function App() {
   const counter = useSelector((state) => state.counter)
+  const customNumber = 10;
   const dispatch = useDispatch();
   const increment = () => {
-    dispatch({type: 'INC'})
+    dispatch(actions.increment())
   }
   const decrement = () => {
-    dispatch({type: 'DEC'})
+    dispatch(actions.decrement())
   }
-  const add10 = () => {
-    dispatch({type: 'ADD10', payload: 10})
+  const addCustomNumber = () => {
+    dispatch(actions.addNumber(customNumber))
   }
   return (
       <div>
@@ -22,8 +24,8 @@ function App() {
         <button onClick={decrement}>
           Diminuir
         </button>
-        <button onClick={add10}>
-          Aumentar em 10
+        <button onClick={addCustomNumber}>
+          Aumentar em {customNumber}
         </button>
       </div>  
   )
